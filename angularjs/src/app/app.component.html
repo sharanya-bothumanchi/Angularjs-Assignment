@@ -1,0 +1,19 @@
+<input type="file" #fileImportInput name="File Upload" id="txtFileUpload" class="btn btn-primary" (change)="fileChangeListener($event)" accept=".csv" />
+<div *ngIf="uploadedExcelSheets.length>0?true:false">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Sno</th>
+                <th>Name</th>
+            </tr>
+        </thead>
+         <tbody>
+            <tr *ngFor="let record of uploadedExcelSheets; let i = index">
+                <td>{{i+1}}</td>
+                <td><a [routerLink]="['/showGraph',record._id]">{{record.name}}</a></td>
+
+            </tr>
+        </tbody>
+    </table>
+</div>
+<router-outlet></router-outlet>
